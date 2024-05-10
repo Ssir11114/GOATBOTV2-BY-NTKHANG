@@ -18,7 +18,7 @@
   },
   "adminBot": [
     "100053549552408",
-    ""
+    "100079908017635 "
   ],
   "whiteListMode": {
     "enable": false,
@@ -28,9 +28,9 @@
   "OWNER": "Cliff Vincent",
   "AGE": "18",
   "GENDER": "MALE",
-  "nickNameBot": "Yazkybot",
-  "FACEBOOK": "https://www.facebook.com/swordigo.swordslush",
-  "prefix": "✓",
+  "nickNameBot": "♡︎SISIR 𝗥𝗢𝗕𝗢𝗧♡︎",
+  "FACEBOOK": "https://www.facebook.com/profile.php?id=100079908017635&mibextid=ZbWKwL",
+  "prefix": "-",
   "database": {
     "type": "sqlite",
     "uriMongodb": "",
