@@ -3,17 +3,17 @@ const axios = require("axios");
 const path = require("path");
 const { getPrefix } = global.utils;
 const { commands, aliases } = global.GoatBot;
-const doNotDelete = "[ ♥️| AYAN BOT ]"; // changing this wont change the goatbot V2 of list cmd it is just a decoyy
+const doNotDelete = "[ 😎 | Perfect AI ]";
 
 module.exports = {
   config: {
     name: "help",
     version: "1.17",
-    author: "NTKhang", //**original author MR.AYAN this is author fb I'd : https://m.me/NOOBS.DEVELOPER.AYAN **//
-    countDown: 5,
+    author: "NTKhang", // orginal author Kshitiz
+    countDown: 0,
     role: 0,
     shortDescription: {
-      en: "View command usage and list all commands directly",
+      en: "View command usage",
     },
     longDescription: {
       en: "View command usage and list all commands directly",
@@ -26,78 +26,64 @@ module.exports = {
   },
 
   onStart: async function ({ message, args, event, threadsData, role }) {
-    const { threadID } = event;
-    const threadData = await threadsData.get(threadID);
-    const prefix = getPrefix(threadID);
+  const { threadID } = event;
+  const threadData = await threadsData.get(threadID);
+  const prefix = getPrefix(threadID);
 
-    if (args.length === 0) {
+  if (args.length === 0) {
       const categories = {};
       let msg = "";
 
-      msg += `░░░░█▄█ ▄▀█ ▀█ █▄▀ █▄█░░░
-░░░░░█░ █▀█ █▄ █░█ ░█░░░░\n\n◦❭❯❱ 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦 & 𝗖𝗔𝗧𝗘𝗚𝗢𝗥𝗬 ❰❮❬◦`; // replace with your name 
+      msg += `╔══════════════╗\n     PERFECT CMD💐\n╚══════════════╝`;
 
       for (const [name, value] of commands) {
-        if (value.config.role > 1 && role < value.config.role) continue;
+          if (value.config.role > 1 && role < value.config.role) continue;
 
-        const category = value.config.category || "Uncategorized";
-        categories[category] = categories[category] || { commands: [] };
-        categories[category].commands.push(name);
+          const category = value.config.category || "Uncategorized";
+          categories[category] = categories[category] || { commands: [] };
+          categories[category].commands.push(name);
       }
+8
+      Object.keys(categories).forEach(category => {
+          if (category !== "info") {
+              msg += `\n╭────────────⭓\n│『 ${category.toUpperCase()} 』`;
 
-      Object.keys(categories).forEach((category) => {
-        if (category !== "info") {
-          msg += `\n╭───────────❍\n│ 『  ${category.toUpperCase()}  』`;
+              const names = categories[category].commands.sort();
+              for (let i = 0; i < names.length; i += 1) {
+                  const cmds = names.slice(i, i + 1).map(item => `│✧${item}`);
+                  msg += `\n${cmds.join(" ".repeat(Math.max(0, 5 - cmds.join("").length)))}`;
+              }
 
-
-          const names = categories[category].commands.sort();
-          for (let i = 0; i < names.length; i += 3) {
-            const cmds = names.slice(i, i + 3).map((item) => `✰${item}`);
-            msg += `\n│ ${cmds.join(" ".repeat(Math.max(1, 10 - cmds.join("").length)))}`;
+              msg += `\n╰────────⭓`;
           }
-
-          msg += `\n╰────────────𒁍`;
-        }
       });
 
       const totalCommands = commands.size;
-      msg += `\n𝗖𝘂𝗿𝗿𝗲𝗻𝘁𝗹𝘆, 𝘁𝗵𝗲 𝗯𝗼𝘁 𝗵𝗮𝘀 ${totalCommands} 𝗰𝗼𝗺𝗺𝗮𝗻𝗱𝘀 𝘁𝗵𝗮𝘁 𝗰𝗮𝗻 𝗯𝗲 𝘂𝘀𝗲𝗱\n`;
-      msg += `𝗧𝘆𝗽𝗲 ${prefix} 𝗵𝗲𝗹𝗽 𝗰𝗺𝗱𝗡𝗮𝗺𝗲 𝘁𝗼 𝘃𝗶𝗲𝘄 𝘁𝗵𝗲 𝗱𝗲𝘁𝗮𝗶𝗹𝘀 𝗼𝗳 𝘁𝗵𝗮𝘁 𝗰𝗼𝗺𝗺𝗮𝗻𝗱\n\n`;
-      msg += `This bot made by SISIR-SARKAR | 🫶 SISIR-LORD 3.0`; // its not decoy so change it if you want 
+      msg += `\n𝘾𝙪𝙧𝙧𝙚𝙣𝙩𝙡𝙮, 𝙄 𝙝𝙖𝙫𝙚  ${totalCommands} 𝙘𝙤𝙢𝙢𝙖𝙣𝙙𝙨 𝙩𝙝𝙖𝙩 𝙘𝙖𝙣 𝙗𝙚 𝙪𝙨𝙚𝙙. 𝙎𝙤𝙤𝙣 𝙢𝙤𝙧𝙚 𝙘𝙤𝙢𝙢𝙖𝙣𝙙𝙨 𝙬𝙞𝙡𝙡 𝙗𝙚 𝙖𝙙𝙙𝙚𝙙\n`;
+      msg += `𝙏𝙮𝙥𝙚 ${prefix} 𝙝𝙚𝙡𝙥 𝗰𝙤𝙢𝙢𝙖𝙣𝙙 𝗡𝗮𝗺𝗲 𝘁𝗼 𝘃𝗶𝗲𝘄 𝘁𝗵𝗲 𝗱𝗲𝘁𝗮𝗶𝗹𝘀 𝗼𝗳 𝘁𝗵𝗮𝘁 𝗰𝗼𝗺𝗺𝗮𝗻𝗱\n`;
+      msg += `𝑴𝑹 𝑷𝑬𝑹𝑭𝑬𝑪𝑻 𝑨𝑰 (•̀ᴗ•́)و`;
+
 
       const helpListImages = [
-        'https://i.imgur.com/xyDcrW3.jpeg',
 
-        'https://i.imgur.com/wdZLWTU.jpeg',
+"https://i.imgur.com/WHRGiPz.gif",
+"https://i.imgur.com/zM4Hvmn.gif ",
+"https://i.imgur.com/8d6WbRJ.gif",
+"https://i.imgur.com/aYS6HRa.mp4",
+"https://i.imgur.com/dOAZf6R.jpeg",
+"https://i.imgur.com/AIz8ASV.jpeg",
+"https://i.imgur.com/6vAPXOY.gif"
+];
 
-        'https://i.imgur.com/cJksczg.jpeg',
-
-        'https://i.imgur.com/URCFjrS.jpeg',
-
-        'https://i.imgur.com/iAHVc1a.jpeg',
-                          'https://i.imgur.com/OSWG34k.jpeg',
-
-        'https://i.imgur.com/sTHeaMB.jpeg',
-
-        'https://i.imgur.com/6zzEoxf.jpeg',
-
-        'https://i.imgur.com/rDsUmFW.jpeg',
-
-        'https://i.imgur.com/Ew37GbZ.jpeg',
-
-        'https://i.imgur.com/QXnv0P8.jpeg',                                    
-        'https://i.imgur.com/f755v5B.jpeg', 
-
-        'https://i.imgur.com/7g5AKgh.jpeg',
-      ];
 
       const helpListImage = helpListImages[Math.floor(Math.random() * helpListImages.length)];
 
+
       await message.reply({
-        body: msg,
-        attachment: await global.utils.getStreamFromURL(helpListImage),
+          body: msg,
+          attachment: await global.utils.getStreamFromURL(helpListImage)
       });
-    } else {
+  } else {
       const commandName = args[0].toLowerCase();
       const command = commands.get(commandName) || commands.get(aliases.get(commandName));
 
@@ -147,4 +133,4 @@ function roleTextToString(roleText) {
     default:
       return "Unknown role";
   }
-} 
+}
