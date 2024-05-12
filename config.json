@@ -34,7 +34,7 @@
   "GENDER": "MALE",
   "nickNameBot": "♡︎SISIR 𝗥𝗢𝗕𝗢𝗧♡︎",
   "authorFB": "https://m.me/NOOBS.DEVELOPER.AYAN",
-  "prefix": "-",
+  "prefix": "/",
   "database": {
     "type": "sqlite",
     "uriMongodb": "",
